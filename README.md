@@ -9,6 +9,15 @@ On retrouve ici la mise en place d'un réseau pour une entreprise fictive woody-
 Le site web est accessible sur 
 - www.net.woody-toys.world
 - blog.net.woody-toys.world
+- www.net.woody-toys.world/products.php
+
+Tout est redirigé en HTTPS
+
+Le serveur web est sur
+- mail.net.woody-toys.world
+
+Le serveur DNS est sur 
+- ns1.net.woody-toys.world
 
 Il n'y a qu'un seul vps en fonction dans ce réseau avec différents services.
 
