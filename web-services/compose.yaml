@@ -1,0 +1,45 @@
+services:
+  web:
+    build: ./web
+    container_name: web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./web/nginx.conf:/etc/nginx/nginx.conf
+      - ./web/web-files/html:/var/www/html/
+      - ./web/letsencrypt:/etc/letsencrypt
+      - ./web/certificate/nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key
+      - ./web/certificate/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
+    networks:
+      dmz:
+  php:
+    build: ./php
+    container_name: php
+    env_file:
+      - db.env
+    volumes:
+      - type: bind
+        source: ./web/web-files/html
+        target: /var/www/html
+    networks:
+      dmz:
+      db_net:
+  db:
+    image: mariadb
+    env_file:
+      - db/root.env
+      - db.env
+    volumes:
+      - ./db/my-resolve.cnf:/etc/mysql/conf.d/my-resolve.cnf
+      - ./db/woodytoys.sql:/docker-entrypoint-initdb.d/woodytoys.sql
+      - db-data:/var/lib/mysql
+    networks:
+      db_net:
+
+volumes:
+  db-data:
+
+networks:
+  dmz:
+  db_net:

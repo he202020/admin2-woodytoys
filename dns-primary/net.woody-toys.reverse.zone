@@ -1,0 +1,20 @@
+$TTL 86400      ; 1 jour en secondes
+@   IN  SOA ns1.net.woody-toys.world. admin.net.woody-toys.world. (
+        2024082503 ; Numéro de série (AAAAMMJJXX)
+        3600       ; Refresh (1 heure)
+        1800       ; Retry (30 minutes)
+        1209600    ; Expire (2 semaines)
+        86400      ; Minimum TTL (1 jour)
+)
+
+; Enregistrements NS
+@   IN  NS  ns1.net.woody-toys.world.
+
+; Enregistrements PTR
+53  IN  PTR  www.net.woody-toys.world.
+53  IN  PTR  blog.net.woody-toys.world.
+53  IN  PTR  mail.net.woody-toys.world.
+
+; Enregistrement NS du serveur de noms
+53  IN  PTR  ns1.net.woody-toys.world.
+

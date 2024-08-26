@@ -1,0 +1,4 @@
+sudo openssl req -nodes -newkey rsa:4096 -keyout certificate/nginx-selfsigned.key -out certificate/nginx-selfsigned.csr
+sudo openssl x509 -signkey certificate/nginx-selfsigned.key -in certificate/nginx-selfsigned.csr -req -days 365 -out certificate/nginx-selfsigned.crt
+openssl x509 -noout -text -in certificate/nginx-selfsigned.crt
+

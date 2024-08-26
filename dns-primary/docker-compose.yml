@@ -1,0 +1,13 @@
+services:
+  dns:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: dns
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./named.conf:/etc/bind/named.conf
+      - ./net.woody-toys.zone:/etc/bind/net.woody-toys.zone
+      - ./net.woody-toys.reverse.zone:/etc/bind/net.woody-toys.reverse.zone
+    command: sh -c "chmod g+rwx "/etc/bind" && named -g -u "bind" "
+
